@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UC Reward Claim</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to bottom right, #0d0d0d, #1a1a1a);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: #111;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #ffcc00;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 10px;
+      border: none;
+      background: #222;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #ffcc00;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #e6b800;
+    }
+
+    .hidden { display: none; }
+
+    .loader {
+      border: 4px solid #222;
+      border-top: 4px solid #ffcc00;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .message {
+      background: #222;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ffcc00;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align: center; margin-bottom: 15px;">
+    <h1 style="font-size: 24px; font-weight: bold; color: #ffffff; text-transform: uppercase;">MIDDOT App is giving away Free 380 UC</h1>
+    <div style="font-size: 50px; animation: bounce 1s infinite; color: #ffcc00;">&#8595;</div>
+  </div>
+
+  <div class="container">
+    <h2>Claim Your Free 380 UC</h2>
+
+    <div id="step1">
+      <p>Enter your BGMI ID to verify:</p>
+      <input type="text" id="bgmiId" placeholder="e.g. 5123456789">
+      <button onclick="verifyID()">Verify ID</button>
+    </div>
+
+    <div id="step2" class="hidden">
+      <p>Verifying ID...</p>
+      <div class="loader"></div>
+    </div>
+
+    <div id="step3" class="hidden">
+      <p><strong>Reward Ready!</strong><br>Complete the sponsor task to unlock your UC.</p>
+      <a href="https://shashankk.xyz/c?o=1&a=147" target="_blank">
+        <button>Download App</button>
+      </a>
+    </div>
+
+    <div id="step4" class="hidden">
+      <div class="message" id="finalMessage"></div>
+    </div>
+  </div>
+
+  <script>
+    function verifyID() {
+      const id = document.getElementById('bgmiId').value.trim();
+      if (!id) return alert('Please enter a valid BGMI ID.');
+
+      document.getElementById('step1').classList.add('hidden');
+      document.getElementById('step2').classList.remove('hidden');
+
+      setTimeout(() => {
+        document.getElementById('step2').classList.add('hidden');
+        document.getElementById('step3').classList.remove('hidden');
+      }, 3000);
+    }
+
+    const messages = [
+      "Too many requests right now. Please try again tomorrow.",
+      "UC drop quota for today is full.",
+      "You are in waiting queue #2473. Try again in 24 hrs.",
+      "Maintenance is ongoing. Rewards will be available soon.",
+      "Server overloaded due to high traffic.",
+      "Your account verification is delayed. Please retry tomorrow.",
+      "UC stock depleted for today. Visit again soon.",
+      "Reward dispatch paused temporarily.",
+      "You’ve already claimed once today.",
+      "System is under update. Try after 6 PM."
+    ];
+
+    function showFinalMessage() {
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById('step3').innerHTML = '<p>Verifying task completion...</p><div class="loader"></div>';
+      setTimeout(() => {
+        document.getElementById('step3').classList.add('hidden');
+        document.getElementById('step4').classList.remove('hidden');
+        document.getElementById('finalMessage').textContent = randomMsg;
+      }, 120000);
+    }
+
+    document.querySelector('a').addEventListener('click', () => {
+      showFinalMessage();
+    });
+  </script>
+</body>
+</html>
