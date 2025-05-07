@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>UC Reward Claim</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     body {
       margin: 0;
@@ -15,6 +15,10 @@
       flex-direction: column;
       align-items: center;
       padding: 20px;
+    }
+
+    h1, h2, p, input, button {
+      font-family: 'Orbitron', sans-serif;
     }
 
     .container {
@@ -101,7 +105,9 @@
 </head>
 <body>
   <div style="text-align: center; margin-bottom: 15px;">
-    <h1 style="font-size: 24px; font-weight: bold; color: #ffffff; text-transform: uppercase;">MIDDOT App is giving away Free 380 UC</h1>
+    <h1 style="font-size: 24px; font-weight: bold; color: #ffffff; text-transform: uppercase;">
+      MIDDOT App is giving away Free 380 UC
+    </h1>
     <div style="font-size: 50px; animation: bounce 1s infinite; color: #ffcc00;">&#8595;</div>
   </div>
 
@@ -110,7 +116,7 @@
 
     <div id="step1">
       <p>Enter your BGMI ID to verify:</p>
-      <input type="text" id="bgmiId" placeholder="e.g. 5123456789">
+      <input type="text" id="bgmiId" placeholder="e.g. 5123456789" />
       <button onclick="verifyID()">Verify ID</button>
     </div>
 
